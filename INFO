@@ -1,0 +1,2 @@
+docker run -it --rm alpine:latest sh  starts a quick alpine docker image and deleets it afterwards
+docker system prune   delete all containers
