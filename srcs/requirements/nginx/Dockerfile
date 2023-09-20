@@ -10,7 +10,7 @@ ENV SSL_PATH /etc/nginx/ssl
 RUN mkdir -p $SSL_PATH
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
         -out $SSL_PATH/mgraefen.crt \ 
-        -keyout $SSL_PATH/fsandel.key \
+        -keyout $SSL_PATH/mgraefen.key \
 				-subj "/C=DE/ST=HN/O=42Heilbronn/OU=mgraefen/CN=mgraefen"
 
 # Copy Nginx configuration file
