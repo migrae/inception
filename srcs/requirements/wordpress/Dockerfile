@@ -12,7 +12,7 @@ RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp-cli
 RUN wp-cli core download
 
-COPY conf/wp-config.php /var/www/wordpress
+# COPY conf/wp-config.php /var/www/wordpress
 COPY tools/edit_fm_conf.sh .
 COPY tools/setup_wordpress.sh /usr/bin/
 RUN chmod +x edit_fm_conf.sh && ./edit_fm_conf.sh

@@ -8,6 +8,6 @@ echo "FLUSH PRIVILEGES;"                                        >> $DB_DIR
 echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASS';"  >> $DB_DIR
 
 rc-service mariadb start;
-mariadb -u root < $DB_DIR;
-mysqladmin -u root shutdown;
+mariadb -u root -p"$DB_ROOT_PASS" < $DB_DIR;
+mysqladmin -u root -p"$DB_ROOT_PASS" shutdown;
 mariadbd -u root;
