@@ -1,6 +1,8 @@
-FROM alpine:3.18
+FROM alpine:3.17
 
-RUN apk update && apk add mariadb mariadb-client openrc
+RUN apk update \
+		&& apk upgrade \
+		&& apk add mariadb mariadb-client openrc
 
 # Configure OpenRC
 RUN openrc && touch /run/openrc/softlevel
@@ -12,8 +14,6 @@ COPY tools/mariadb_setup.sh /mariadb_setup.sh
 # Set permissions
 RUN chmod +x /mariadb_setup.sh
 RUN mkdir -p tmp
-# Expose MariaDB port
-EXPOSE 3306
 
 RUN /etc/init.d/mariadb setup
 # Run the entrypoint script

@@ -1,7 +1,9 @@
 DB_VOLUME=~/data/wp_data
 WP_VOLUME=~/data/wp_files
 
-all: $(DB_VOLUME) $(WP_VOLUME)
+all: $(DB_VOLUME) $(WP_VOLUME) up
+
+up:
 	@docker-compose -f ./srcs/docker-compose.yml up -d --build
 
 $(DB_VOLUME):
@@ -26,5 +28,8 @@ killv: fclean
 re: clean all
 
 hre: fclean killv all
+
+eval:
+	bash eval_delete.sh
 
 .PHONY: all clean fclean killv re hre
