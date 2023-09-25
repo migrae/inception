@@ -1,8 +1,9 @@
 #!/bin/sh
+rm -f wp-config.php 
 while ! wp-cli config create --allow-root --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASS --dbhost=$WP_DB_HOST
 do
 	sleep 1
-	echo "Waiting for WP Config create"
+	echo "...Waiting for WP Config create..."
 done
 while ! wp-cli core install --title=$WP_TITLE \
         --url=$WP_HOST --admin_user=$WP_ADMIN \
